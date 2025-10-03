@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import WaitlistForm from "@/components/WaitlistForm"
 
 export default function Navbar() {
   return (
@@ -21,12 +22,10 @@ export default function Navbar() {
           </Link>
 
           {/* CTA Button */}
-          <Link
-            href="/waitlist"
-            className="bg-[#54b5e0] hover:bg-[#4aa5d0] text-white font-medium px-4 py-2 md:px-6 md:py-2.5 rounded-lg transition-colors text-sm md:text-base"
-          >
-            Join waiting list
-          </Link>
+          <WaitlistForm
+            buttonText="Join waiting list"
+            buttonClassName="bg-[#54b5e0] hover:bg-[#4aa5d0] text-white font-medium px-4 py-2 md:px-6 md:py-2.5 rounded-lg transition-colors text-sm md:text-base"
+          />
         </div>
       </div>
     </nav>

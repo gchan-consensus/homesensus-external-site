@@ -20,7 +20,14 @@ export default function AboutUs() {
             <h3 className="text-xl md:text-2xl font-bold text-[#0a0a0a] mb-5 md:mb-6">Contact us</h3>
 
             <div className="mb-6 md:mb-8">
-              <p className="text-lg md:text-xl text-[#0a0a0a] font-medium">www.homesensus.com</p>
+              <a
+                href="https://www.homesensus.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg md:text-xl text-[#54b5e0] font-medium hover:underline"
+              >
+                www.homesensus.com
+              </a>
             </div>
 
             {/* Team Member 1 */}
