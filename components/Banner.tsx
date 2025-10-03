@@ -1,3 +1,5 @@
+import WaitlistForm from "@/components/WaitlistForm"
+
 export default function Banner() {
   return (
     <section className="bg-[#fac748] py-14 px-6 md:py-20">
@@ -11,9 +13,10 @@ export default function Banner() {
           <span className="font-bold">get a 3-month free trial.</span>
         </p>
 
-        <button className="bg-[#54b5e0] hover:bg-[#4aa5d0] text-white font-medium px-6 py-2.5 rounded-lg transition-colors duration-200 mb-3">
-          Join waiting list
-        </button>
+        <WaitlistForm
+          buttonText="Join waiting list"
+          buttonClassName="bg-[#54b5e0] hover:bg-[#4aa5d0] text-white font-medium px-6 py-2.5 rounded-lg transition-colors duration-200 mb-3"
+        />
 
         <p className="text-xs text-black">(Limited early access spots available).</p>
       </div>

@@ -18,7 +18,7 @@ export default function SolutionOverview() {
         <div className="flex justify-center">
           <div className="relative w-full max-w-5xl">
             <Image
-              src="/images/design-mode/Homesensus___Landing_page__2_.png"
+              src="/images/design-mode/HomeSensus-Overview.png"
               alt="HomeSensus platform lifecycle diagram showing tenant acquisition, lease management, payments, work orders, and financial management in a circular flow"
               width={1200}
               height={800}

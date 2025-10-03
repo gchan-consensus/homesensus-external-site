@@ -1,4 +1,5 @@
 import Image from "next/image"
+import WaitlistForm from "@/components/WaitlistForm"
 
 export default function Hero() {
   return (
@@ -23,18 +24,17 @@ export default function Hero() {
               costs, and zero stress.
             </p>
 
-            <button
-              className="bg-[#0FB8E5] hover:bg-[#0da5cc] text-white font-medium transition-colors duration-200"
-              style={{
+            <WaitlistForm
+              buttonText="Join waiting list"
+              buttonClassName="bg-[#0FB8E5] hover:bg-[#0da5cc] text-white font-medium transition-colors duration-200"
+              buttonStyle={{
                 padding: "23.5px 31.4px",
                 borderRadius: "7.84px",
                 fontSize: "17.65px",
                 lineHeight: "27px",
                 letterSpacing: "-0.43px",
               }}
-            >
-              Join waiting list
-            </button>
+            />
           </div>
 
           {/* Right Image - Extended to touch top and right edges */}
