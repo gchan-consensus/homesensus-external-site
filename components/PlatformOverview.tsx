@@ -70,7 +70,7 @@ export default function PlatformOverview() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="mb-6 text-2xl font-bold leading-tight text-[#0a0a0a] text-center sm:text-3xl lg:text-4xl text-balance">
-          HomeSensus is an AI platform for DIY landlords, Property Managers & HOA members, at a fraction of traditional property management costs
+          Smarter property management for landlords, Property Managers & HOAs
         </h2>
 
         {/* Subheading */}

@@ -16,7 +16,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-4 lg:space-y-6 py-12 lg:py-0">
             <h1 className="text-2xl font-bold leading-tight text-[#000000] sm:text-3xl lg:text-4xl">
-              Welcome to the AI-Driven Future of Property Management
+              The AI-Driven Future of Property Management
             </h1>
 
             <p className="text-lg text-[#334154] sm:text-xl">
@@ -39,7 +39,7 @@ export default function Hero() {
 
           {/* Right Image - Extended to touch top and right edges */}
           <div
-            className="absolute top-0 right-0 h-[350px] lg:h-[calc(100%-2rem)] w-[50%] overflow-hidden"
+            className="hidden lg:block lg:absolute top-0 right-0 h-[350px] lg:h-[calc(100%-2rem)] w-[50%] overflow-hidden"
             style={{
               borderRadius: "0px 0px 0px 476.207px",
             }}

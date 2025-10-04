@@ -7,7 +7,7 @@ export default function SolutionOverview() {
         {/* Heading */}
         <div className="mb-12 text-center">
           <h2 className="mb-6 text-2xl font-bold leading-tight text-[#0a0a0a] sm:text-3xl lg:text-4xl">
-            AI-powered platform built for everyday landlords
+            Let AI run the rentals, while you collect the rewards.
           </h2>
           <p className="mx-auto max-w-3xl text-lg text-[#4a5565] sm:text-xl">
             AI-Driven orchestration of end-to-end lifecycle with deep integrations that replace fragmented tools.
