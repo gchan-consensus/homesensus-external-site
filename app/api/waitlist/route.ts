@@ -33,29 +33,55 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Subscribe to Kit form using v3 API
-    const kitResponse = await fetch(
-      `https://api.convertkit.com/v3/forms/${formId}/subscribe`,
+    // Kit V4 API requires a two-step process:
+    // Step 1: Create the subscriber
+    const createSubscriberResponse = await fetch(
+      `https://api.kit.com/v4/subscribers`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-Kit-Api-Key": apiKey,
         },
         body: JSON.stringify({
-          api_key: apiKey,
-          email,
+          email_address: email,
           ...(firstName && { first_name: firstName }),
         }),
       }
     )
 
-    const kitData = await kitResponse.json()
+    const subscriberData = await createSubscriberResponse.json()
 
-    if (!kitResponse.ok) {
-      console.error("Kit API error:", kitData)
+    if (!createSubscriberResponse.ok) {
+      console.error("Kit API error (create subscriber):", subscriberData)
       return NextResponse.json(
-        { error: kitData.message || "Failed to subscribe to waitlist" },
-        { status: kitResponse.status }
+        { error: subscriberData.errors?.[0] || "Failed to create subscriber" },
+        { status: createSubscriberResponse.status }
+      )
+    }
+
+    // Step 2: Add the subscriber to the form (triggers confirmation email)
+    const addToFormResponse = await fetch(
+      `https://api.kit.com/v4/forms/${formId}/subscribers`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Kit-Api-Key": apiKey,
+        },
+        body: JSON.stringify({
+          email_address: email,
+        }),
+      }
+    )
+
+    const formData = await addToFormResponse.json()
+
+    if (!addToFormResponse.ok) {
+      console.error("Kit API error (add to form):", formData)
+      return NextResponse.json(
+        { error: formData.errors?.[0] || "Failed to subscribe to waitlist" },
+        { status: addToFormResponse.status }
       )
     }
 
