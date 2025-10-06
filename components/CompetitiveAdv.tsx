@@ -63,7 +63,7 @@ export default function CompetitiveAdv() {
                     />
                   </svg>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-cyan-100">For DIY Landlords</span>
+                <span className="text-xs uppercase tracking-wider text-cyan-100">For DIY Landlords and Property Managers</span>
               </div>
               <div className="mt-6">
                 <h3 className="text-lg font-bold leading-snug mb-2">
