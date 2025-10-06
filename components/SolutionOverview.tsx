@@ -62,47 +62,67 @@ export default function SolutionOverview() {
 
             {/* Circular flow path */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 600">
-              {/* Animated circular path */}
-              <circle
-                cx="400"
-                cy="300"
-                r="200"
-                fill="none"
-                stroke="#9CA3AF"
-                strokeWidth="3"
-              />
+              <motion.g
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                style={{ transformOrigin: "400px 300px" }}
+              >
+                {/* Arc segments with arrows */}
+                {[0, 120, 240].map((startAngle, idx) => {
+                  // Arc segment (85 degrees)
+                  const arcLength = 85
+                  const arcStart = (startAngle - 90) * Math.PI / 180
+                  const arcEnd = (startAngle + arcLength - 90) * Math.PI / 180
 
-              {/* Orbiting arrowheads */}
-              {[0, 120, 240].map((startAngle, idx) => (
-                <motion.g
-                  key={idx}
-                  animate={{
-                    x: Array.from({ length: 361 }, (_, i) => {
-                      const angle = ((i + startAngle) - 90) * Math.PI / 180
-                      return 400 + 200 * Math.cos(angle)
-                    }),
-                    y: Array.from({ length: 361 }, (_, i) => {
-                      const angle = ((i + startAngle) - 90) * Math.PI / 180
-                      return 300 + 200 * Math.sin(angle)
-                    }),
-                    rotate: Array.from({ length: 361 }, (_, i) => i + startAngle),
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <path
-                    d="M -4,-12 L 8,0 L -4,12"
-                    stroke="#9CA3AF"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                  />
-                </motion.g>
-              ))}
+                  // Tapered arc - thick at end (near arrow), thin at start (tail)
+                  const radiusOuter1 = 201 // tail outer
+                  const radiusInner1 = 199 // tail inner
+                  const radiusOuter2 = 205 // head outer
+                  const radiusInner2 = 195 // head inner
+
+                  const x1Outer = 400 + radiusOuter1 * Math.cos(arcStart)
+                  const y1Outer = 300 + radiusOuter1 * Math.sin(arcStart)
+                  const x2Outer = 400 + radiusOuter2 * Math.cos(arcEnd)
+                  const y2Outer = 300 + radiusOuter2 * Math.sin(arcEnd)
+                  const x1Inner = 400 + radiusInner1 * Math.cos(arcStart)
+                  const y1Inner = 300 + radiusInner1 * Math.sin(arcStart)
+                  const x2Inner = 400 + radiusInner2 * Math.cos(arcEnd)
+                  const y2Inner = 300 + radiusInner2 * Math.sin(arcEnd)
+
+                  // Arrow position at end of arc
+                  const arrowAngle = startAngle + arcLength
+                  const arrowRad = (arrowAngle - 90) * Math.PI / 180
+                  const arrowX = 400 + 200 * Math.cos(arrowRad)
+                  const arrowY = 300 + 200 * Math.sin(arrowRad)
+
+                  return (
+                    <g key={idx}>
+                      {/* Tapered curved arc */}
+                      <path
+                        d={`
+                          M ${x1Outer} ${y1Outer}
+                          A ${radiusOuter1} ${radiusOuter1} 0 0 1 ${x2Outer} ${y2Outer}
+                          L ${x2Inner} ${y2Inner}
+                          A ${radiusInner2} ${radiusInner2} 0 0 0 ${x1Inner} ${y1Inner}
+                          Z
+                        `}
+                        fill="#9CA3AF"
+                      />
+                      {/* Large filled triangular arrow */}
+                      <g transform={`translate(${arrowX}, ${arrowY}) rotate(${arrowAngle})`}>
+                        <polygon
+                          points="-20,-20 15,0 -20,20"
+                          fill="#9CA3AF"
+                        />
+                      </g>
+                    </g>
+                  )
+                })}
+              </motion.g>
 
               {/* Component cards as SVG foreignObjects */}
               {components.map((comp, index) => {
