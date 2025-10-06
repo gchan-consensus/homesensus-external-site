@@ -3,7 +3,6 @@ import Hero from "@/components/Hero"
 import PlatformOverview from "@/components/PlatformOverview"
 import SolutionOverview from "@/components/SolutionOverview"
 import CompetitiveAdv from "@/components/CompetitiveAdv"
-import Banner from "@/components/Banner"
 import AboutUs from "@/components/AboutUs"
 
 export default function Page() {
@@ -14,7 +13,6 @@ export default function Page() {
       <PlatformOverview />
       <SolutionOverview />
       <CompetitiveAdv />
-      <Banner />
       <AboutUs />
     </div>
   )

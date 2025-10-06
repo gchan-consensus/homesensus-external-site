@@ -7,7 +7,7 @@ export default function AboutUs() {
         {/* Header */}
         <div className="text-center mb-10 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0a0a0a] mb-3 md:mb-4">About us</h2>
-          <p className="text-[#717182] text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+          <p className="text-[#717182] text-sm sm:text-base max-w-4xl mx-auto leading-relaxed">
             We give landlords and property managers the tools to run their properties as efficiently as large-scale
             operators, simplifying management, strengthening tenant trust, and preserving returns.
           </p>
