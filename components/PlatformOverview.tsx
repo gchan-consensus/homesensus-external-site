@@ -121,9 +121,12 @@ export default function PlatformOverview() {
                 </div>
                 <span className="text-xs uppercase tracking-wider text-white/90">Efficiency</span>
               </div>
-              <div className="mt-6 text-xl leading-snug">
-                Boost operational
-                <br /> efficiency
+              <div>
+                <div className="text-xl leading-snug">
+                  Boost operational
+                  <br /> efficiency
+                </div>
+                <div className="mt-4 text-sm text-white/80">Automate repetitive tasks and reduce manual overhead</div>
               </div>
               <motion.div
                 className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FDCF3F]/30"
@@ -150,9 +153,12 @@ export default function PlatformOverview() {
                 </div>
                 <span className="text-xs uppercase tracking-wider text-[#0a0a0a]/80">Compliance</span>
               </div>
-              <div className="text-xl font-medium leading-snug">
-                Mitigate regulatory
-                <br /> and financial risk
+              <div>
+                <div className="text-xl font-medium leading-snug">
+                  Mitigate regulatory
+                  <br /> and financial risk
+                </div>
+                <div className="mt-4 text-sm text-[#0a0a0a]/70">Stay compliant with automated tracking and reporting</div>
               </div>
             </div>
           </motion.div>

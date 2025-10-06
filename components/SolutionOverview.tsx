@@ -93,9 +93,13 @@ export default function SolutionOverview() {
                     ease: "linear",
                   }}
                 >
-                  <polygon
-                    points="-8,-10 8,0 -8,10"
-                    fill="#9CA3AF"
+                  <path
+                    d="M -4,-12 L 8,0 L -4,12"
+                    stroke="#9CA3AF"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
                   />
                 </motion.g>
               ))}
@@ -111,10 +115,10 @@ export default function SolutionOverview() {
                 return (
                   <foreignObject
                     key={comp.name}
-                    x={x - 110}
-                    y={y - 40}
-                    width="220"
-                    height="80"
+                    x={x - 125}
+                    y={y - 50}
+                    width="250"
+                    height="100"
                   >
                     <motion.div
                       className={`flex items-center justify-center h-full`}
