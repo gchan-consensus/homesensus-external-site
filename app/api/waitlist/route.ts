@@ -45,6 +45,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           email_address: email,
+          state: 'active',
           ...(firstName && { first_name: firstName }),
         }),
       }
@@ -60,35 +61,34 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Step 2: Add the subscriber to the form (triggers confirmation email)
-    const addToFormResponse = await fetch(
-      `https://api.kit.com/v4/forms/${formId}/subscribers`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Kit-Api-Key": apiKey,
-        },
-        body: JSON.stringify({
-          email_address: email,
-        }),
-      }
-    )
-
-    const formData = await addToFormResponse.json()
-
-    if (!addToFormResponse.ok) {
-      console.error("Kit API error (add to form):", formData)
-      return NextResponse.json(
-        { error: formData.errors?.[0] || "Failed to subscribe to waitlist" },
-        { status: addToFormResponse.status }
+    // Tag the subscriber as "waitlist" for tracking
+    const subscriberId = subscriberData.subscriber?.id
+    if (subscriberId) {
+      const tagResponse = await fetch(
+        `https://api.kit.com/v4/tags`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Kit-Api-Key": apiKey,
+          },
+          body: JSON.stringify({
+            tag: { name: "waitlist" },
+            subscriber: { id: subscriberId },
+          }),
+        }
       )
+
+      if (!tagResponse.ok) {
+        console.error("Kit API error (tag subscriber):", await tagResponse.json())
+        // Don't fail the request if tagging fails
+      }
     }
 
     // Success!
     return NextResponse.json({
       success: true,
-      message: "Successfully joined the waitlist! Check your email to confirm.",
+      message: "You're on the list! We'll keep you updated.",
     })
   } catch (error) {
     console.error("Waitlist API error:", error)
