@@ -4,6 +4,7 @@ import PlatformOverview from "@/components/PlatformOverview"
 import SolutionOverview from "@/components/SolutionOverview"
 import CompetitiveAdv from "@/components/CompetitiveAdv"
 import AboutUs from "@/components/AboutUs"
+import Footer from "@/components/Footer"
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
       <SolutionOverview />
       <CompetitiveAdv />
       <AboutUs />
+      <Footer />
     </div>
   )
 }
